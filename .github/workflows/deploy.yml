@@ -33,7 +33,13 @@ jobs:
           cp README.md content
           jupyter lite build --contents content --output-dir dist
 
-      - name: Upload artifact
+      - name: Upload artifact for download
+        uses: actions/upload-artifact@v4
+        with:
+          name: jupyterlite-artifact
+          path: ./dist
+
+      - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
